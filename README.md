@@ -1,2 +1,8 @@
 # LukeDotNet
-Improvements to the Luke.Net project from codeplex
+
+Attempt to update Luke.Net (https://luke.codeplex.com/)
+- Improve usability
+- Improve look and feel (https://github.com/IgnaceMaes/MaterialSkin)
+
+
+
