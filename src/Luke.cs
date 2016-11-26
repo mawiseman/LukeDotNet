@@ -288,7 +288,38 @@ namespace Lucene.Net.LukeNet
             this.statusBarPanelMessage = new System.Windows.Forms.StatusBarPanel();
             this.statusBarPanelLogo = new System.Windows.Forms.StatusBarPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabOverview = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listFields = new System.Windows.Forms.ListView();
+            this.columnHeaderFieldName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listTerms = new System.Windows.Forms.ListView();
+            this.columnHeaderNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderTopTermRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderTopTermField = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderTopTermText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenu = new System.Windows.Forms.ContextMenu();
+            this.domainTerms = new System.Windows.Forms.DomainUpDown();
+            this.labelNumOfTerms = new System.Windows.Forms.Label();
+            this.buttonTopTerms = new System.Windows.Forms.Button();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.labelVersionTitle = new System.Windows.Forms.Label();
+            this.labelDeletions = new System.Windows.Forms.Label();
+            this.labelDeletionsTitle = new System.Windows.Forms.Label();
+            this.labelTopTerms = new System.Windows.Forms.Label();
+            this.labelListFields = new System.Windows.Forms.Label();
+            this.labelSelectHint = new System.Windows.Forms.Label();
+            this.labelSelectHelp = new System.Windows.Forms.Label();
+            this.separatorOverview = new System.Windows.Forms.Label();
+            this.labelFields = new System.Windows.Forms.Label();
+            this.labelDocs = new System.Windows.Forms.Label();
+            this.labelTerms = new System.Windows.Forms.Label();
+            this.labelMod = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelLastMod = new System.Windows.Forms.Label();
+            this.labelNumTerms = new System.Windows.Forms.Label();
+            this.labelNumDocs = new System.Windows.Forms.Label();
+            this.labelNumFields = new System.Windows.Forms.Label();
+            this.labelIndexName = new System.Windows.Forms.Label();
             this.tabDocuments = new System.Windows.Forms.TabPage();
             this.btnTermVector = new System.Windows.Forms.Button();
             this.labelInfoDocNum = new System.Windows.Forms.Label();
@@ -369,41 +400,15 @@ namespace Lucene.Net.LukeNet
             this.lblPluginInfo = new System.Windows.Forms.Label();
             this.lstPlugins = new System.Windows.Forms.ListBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.labelIndexName = new System.Windows.Forms.Label();
-            this.labelNumFields = new System.Windows.Forms.Label();
-            this.labelNumDocs = new System.Windows.Forms.Label();
-            this.labelNumTerms = new System.Windows.Forms.Label();
-            this.labelLastMod = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelMod = new System.Windows.Forms.Label();
-            this.labelTerms = new System.Windows.Forms.Label();
-            this.labelDocs = new System.Windows.Forms.Label();
-            this.labelFields = new System.Windows.Forms.Label();
-            this.separatorOverview = new System.Windows.Forms.Label();
-            this.labelSelectHelp = new System.Windows.Forms.Label();
-            this.labelSelectHint = new System.Windows.Forms.Label();
-            this.labelListFields = new System.Windows.Forms.Label();
-            this.labelTopTerms = new System.Windows.Forms.Label();
-            this.labelDeletionsTitle = new System.Windows.Forms.Label();
-            this.labelDeletions = new System.Windows.Forms.Label();
-            this.labelVersionTitle = new System.Windows.Forms.Label();
-            this.labelVersion = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.listFields = new System.Windows.Forms.ListView();
-            this.columnHeaderFieldName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabOverview = new System.Windows.Forms.TabPage();
-            this.listTerms = new System.Windows.Forms.ListView();
-            this.columnHeaderNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderTopTermRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderTopTermField = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderTopTermText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.domainTerms = new System.Windows.Forms.DomainUpDown();
-            this.labelNumOfTerms = new System.Windows.Forms.Label();
-            this.buttonTopTerms = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanelIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanelMessage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanelLogo)).BeginInit();
             this.tabControl.SuspendLayout();
+            this.tabOverview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.tabDocuments.SuspendLayout();
             this.groupTerm.SuspendLayout();
             this.groupDocNumber.SuspendLayout();
@@ -413,11 +418,6 @@ namespace Lucene.Net.LukeNet
             this.tabPlugins.SuspendLayout();
             this.groupPlugin.SuspendLayout();
             this.groupPluginInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.tabOverview.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -556,6 +556,338 @@ namespace Lucene.Net.LukeNet
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
+            // tabOverview
+            // 
+            this.tabOverview.Controls.Add(this.splitContainer1);
+            this.tabOverview.Controls.Add(this.labelVersion);
+            this.tabOverview.Controls.Add(this.labelVersionTitle);
+            this.tabOverview.Controls.Add(this.labelDeletions);
+            this.tabOverview.Controls.Add(this.labelDeletionsTitle);
+            this.tabOverview.Controls.Add(this.labelTopTerms);
+            this.tabOverview.Controls.Add(this.labelListFields);
+            this.tabOverview.Controls.Add(this.labelSelectHint);
+            this.tabOverview.Controls.Add(this.labelSelectHelp);
+            this.tabOverview.Controls.Add(this.separatorOverview);
+            this.tabOverview.Controls.Add(this.labelFields);
+            this.tabOverview.Controls.Add(this.labelDocs);
+            this.tabOverview.Controls.Add(this.labelTerms);
+            this.tabOverview.Controls.Add(this.labelMod);
+            this.tabOverview.Controls.Add(this.labelName);
+            this.tabOverview.Controls.Add(this.labelLastMod);
+            this.tabOverview.Controls.Add(this.labelNumTerms);
+            this.tabOverview.Controls.Add(this.labelNumDocs);
+            this.tabOverview.Controls.Add(this.labelNumFields);
+            this.tabOverview.Controls.Add(this.labelIndexName);
+            this.tabOverview.ImageIndex = 0;
+            this.tabOverview.Location = new System.Drawing.Point(8, 39);
+            this.tabOverview.Name = "tabOverview";
+            this.tabOverview.Size = new System.Drawing.Size(1494, 1050);
+            this.tabOverview.TabIndex = 0;
+            this.tabOverview.Text = "Overview";
+            this.tabOverview.Resize += new System.EventHandler(this.tabOverview_Resize);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(21, 347);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.listFields);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.listTerms);
+            this.splitContainer1.Panel2.Controls.Add(this.domainTerms);
+            this.splitContainer1.Panel2.Controls.Add(this.labelNumOfTerms);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonTopTerms);
+            this.splitContainer1.Size = new System.Drawing.Size(1469, 696);
+            this.splitContainer1.SplitterDistance = 489;
+            this.splitContainer1.TabIndex = 24;
+            // 
+            // listFields
+            // 
+            this.listFields.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listFields.CheckBoxes = true;
+            this.listFields.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderFieldName});
+            this.listFields.FullRowSelect = true;
+            this.listFields.GridLines = true;
+            this.listFields.HideSelection = false;
+            this.listFields.Location = new System.Drawing.Point(17, 7);
+            this.listFields.MultiSelect = false;
+            this.listFields.Name = "listFields";
+            this.listFields.Size = new System.Drawing.Size(460, 682);
+            this.listFields.TabIndex = 15;
+            this.listFields.UseCompatibleStateImageBehavior = false;
+            this.listFields.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderFieldName
+            // 
+            this.columnHeaderFieldName.Text = "Name";
+            this.columnHeaderFieldName.Width = 200;
+            // 
+            // listTerms
+            // 
+            this.listTerms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listTerms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderNo,
+            this.columnHeaderTopTermRank,
+            this.columnHeaderTopTermField,
+            this.columnHeaderTopTermText});
+            this.listTerms.ContextMenu = this.contextMenu;
+            this.listTerms.FullRowSelect = true;
+            this.listTerms.GridLines = true;
+            this.listTerms.Location = new System.Drawing.Point(264, 22);
+            this.listTerms.MultiSelect = false;
+            this.listTerms.Name = "listTerms";
+            this.listTerms.Size = new System.Drawing.Size(700, 667);
+            this.listTerms.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listTerms.TabIndex = 23;
+            this.listTerms.UseCompatibleStateImageBehavior = false;
+            this.listTerms.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderNo
+            // 
+            this.columnHeaderNo.Text = "?";
+            this.columnHeaderNo.Width = 40;
+            // 
+            // columnHeaderTopTermRank
+            // 
+            this.columnHeaderTopTermRank.Text = "Rank";
+            this.columnHeaderTopTermRank.Width = 50;
+            // 
+            // columnHeaderTopTermField
+            // 
+            this.columnHeaderTopTermField.Text = "Field";
+            this.columnHeaderTopTermField.Width = 120;
+            // 
+            // columnHeaderTopTermText
+            // 
+            this.columnHeaderTopTermText.Text = "Text";
+            this.columnHeaderTopTermText.Width = 306;
+            // 
+            // domainTerms
+            // 
+            this.domainTerms.Location = new System.Drawing.Point(72, 184);
+            this.domainTerms.Name = "domainTerms";
+            this.domainTerms.Size = new System.Drawing.Size(112, 31);
+            this.domainTerms.TabIndex = 22;
+            // 
+            // labelNumOfTerms
+            // 
+            this.labelNumOfTerms.AutoSize = true;
+            this.labelNumOfTerms.Location = new System.Drawing.Point(24, 155);
+            this.labelNumOfTerms.Name = "labelNumOfTerms";
+            this.labelNumOfTerms.Size = new System.Drawing.Size(212, 25);
+            this.labelNumOfTerms.TabIndex = 21;
+            this.labelNumOfTerms.Text = "&Number of top terms:";
+            // 
+            // buttonTopTerms
+            // 
+            this.buttonTopTerms.Location = new System.Drawing.Point(24, 96);
+            this.buttonTopTerms.Name = "buttonTopTerms";
+            this.buttonTopTerms.Size = new System.Drawing.Size(224, 42);
+            this.buttonTopTerms.TabIndex = 20;
+            this.buttonTopTerms.Text = "&Show top terms ->";
+            // 
+            // labelVersion
+            // 
+            this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelVersion.Location = new System.Drawing.Point(256, 162);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(992, 30);
+            this.labelVersion.TabIndex = 23;
+            this.labelVersion.Text = "?";
+            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelVersionTitle
+            // 
+            this.labelVersionTitle.AutoSize = true;
+            this.labelVersionTitle.Location = new System.Drawing.Point(102, 162);
+            this.labelVersionTitle.Name = "labelVersionTitle";
+            this.labelVersionTitle.Size = new System.Drawing.Size(146, 25);
+            this.labelVersionTitle.TabIndex = 22;
+            this.labelVersionTitle.Text = "Index version:";
+            this.labelVersionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelDeletions
+            // 
+            this.labelDeletions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDeletions.Location = new System.Drawing.Point(256, 133);
+            this.labelDeletions.Name = "labelDeletions";
+            this.labelDeletions.Size = new System.Drawing.Size(992, 29);
+            this.labelDeletions.TabIndex = 21;
+            this.labelDeletions.Text = "?";
+            this.labelDeletions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelDeletionsTitle
+            // 
+            this.labelDeletionsTitle.AutoSize = true;
+            this.labelDeletionsTitle.Location = new System.Drawing.Point(100, 133);
+            this.labelDeletionsTitle.Name = "labelDeletionsTitle";
+            this.labelDeletionsTitle.Size = new System.Drawing.Size(149, 25);
+            this.labelDeletionsTitle.TabIndex = 20;
+            this.labelDeletionsTitle.Text = "Has deletions:";
+            this.labelDeletionsTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelTopTerms
+            // 
+            this.labelTopTerms.AutoSize = true;
+            this.labelTopTerms.Location = new System.Drawing.Point(448, 310);
+            this.labelTopTerms.Name = "labelTopTerms";
+            this.labelTopTerms.Size = new System.Drawing.Size(472, 25);
+            this.labelTopTerms.TabIndex = 18;
+            this.labelTopTerms.Text = "&Top ranking terms. (Right-click for more options)";
+            // 
+            // labelListFields
+            // 
+            this.labelListFields.AutoSize = true;
+            this.labelListFields.Location = new System.Drawing.Point(16, 310);
+            this.labelListFields.Name = "labelListFields";
+            this.labelListFields.Size = new System.Drawing.Size(170, 25);
+            this.labelListFields.TabIndex = 13;
+            this.labelListFields.Text = "&Available Fields:";
+            // 
+            // labelSelectHint
+            // 
+            this.labelSelectHint.AutoSize = true;
+            this.labelSelectHint.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSelectHint.Location = new System.Drawing.Point(16, 281);
+            this.labelSelectHint.Name = "labelSelectHint";
+            this.labelSelectHint.Size = new System.Drawing.Size(721, 22);
+            this.labelSelectHint.TabIndex = 12;
+            this.labelSelectHint.Text = "Hint: use Shift-Click to select ranges, or Ctrl-Click to select multiple fields (" +
+    "or unselect all).";
+            // 
+            // labelSelectHelp
+            // 
+            this.labelSelectHelp.AutoSize = true;
+            this.labelSelectHelp.Location = new System.Drawing.Point(16, 251);
+            this.labelSelectHelp.Name = "labelSelectHelp";
+            this.labelSelectHelp.Size = new System.Drawing.Size(1080, 25);
+            this.labelSelectHelp.TabIndex = 11;
+            this.labelSelectHelp.Text = "Select fields from the list below, and press button to view top terms in these fi" +
+    "elds. No selection means all fields.";
+            // 
+            // separatorOverview
+            // 
+            this.separatorOverview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separatorOverview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.separatorOverview.Location = new System.Drawing.Point(16, 236);
+            this.separatorOverview.Name = "separatorOverview";
+            this.separatorOverview.Size = new System.Drawing.Size(1446, 6);
+            this.separatorOverview.TabIndex = 10;
+            // 
+            // labelFields
+            // 
+            this.labelFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFields.Location = new System.Drawing.Point(256, 44);
+            this.labelFields.Name = "labelFields";
+            this.labelFields.Size = new System.Drawing.Size(992, 30);
+            this.labelFields.TabIndex = 9;
+            this.labelFields.Text = "?";
+            this.labelFields.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelFields.Click += new System.EventHandler(this.labelFields_Click);
+            // 
+            // labelDocs
+            // 
+            this.labelDocs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDocs.Location = new System.Drawing.Point(256, 74);
+            this.labelDocs.Name = "labelDocs";
+            this.labelDocs.Size = new System.Drawing.Size(992, 29);
+            this.labelDocs.TabIndex = 8;
+            this.labelDocs.Text = "?";
+            this.labelDocs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelTerms
+            // 
+            this.labelTerms.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTerms.Location = new System.Drawing.Point(256, 103);
+            this.labelTerms.Name = "labelTerms";
+            this.labelTerms.Size = new System.Drawing.Size(992, 30);
+            this.labelTerms.TabIndex = 7;
+            this.labelTerms.Text = "?";
+            this.labelTerms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelMod
+            // 
+            this.labelMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMod.Location = new System.Drawing.Point(256, 192);
+            this.labelMod.Name = "labelMod";
+            this.labelMod.Size = new System.Drawing.Size(992, 30);
+            this.labelMod.TabIndex = 6;
+            this.labelMod.Text = "?";
+            this.labelMod.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelName
+            // 
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelName.Location = new System.Drawing.Point(256, 15);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(992, 29);
+            this.labelName.TabIndex = 5;
+            this.labelName.Text = "?";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelLastMod
+            // 
+            this.labelLastMod.AutoSize = true;
+            this.labelLastMod.Location = new System.Drawing.Point(102, 192);
+            this.labelLastMod.Name = "labelLastMod";
+            this.labelLastMod.Size = new System.Drawing.Size(146, 25);
+            this.labelLastMod.TabIndex = 4;
+            this.labelLastMod.Text = "Last modified:";
+            this.labelLastMod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelNumTerms
+            // 
+            this.labelNumTerms.AutoSize = true;
+            this.labelNumTerms.Location = new System.Drawing.Point(70, 103);
+            this.labelNumTerms.Name = "labelNumTerms";
+            this.labelNumTerms.Size = new System.Drawing.Size(176, 25);
+            this.labelNumTerms.TabIndex = 3;
+            this.labelNumTerms.Text = "Number of terms:";
+            this.labelNumTerms.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelNumDocs
+            // 
+            this.labelNumDocs.AutoSize = true;
+            this.labelNumDocs.Location = new System.Drawing.Point(16, 74);
+            this.labelNumDocs.Name = "labelNumDocs";
+            this.labelNumDocs.Size = new System.Drawing.Size(228, 25);
+            this.labelNumDocs.TabIndex = 2;
+            this.labelNumDocs.Text = "Number of documents:";
+            this.labelNumDocs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelNumFields
+            // 
+            this.labelNumFields.AutoSize = true;
+            this.labelNumFields.Location = new System.Drawing.Point(72, 44);
+            this.labelNumFields.Name = "labelNumFields";
+            this.labelNumFields.Size = new System.Drawing.Size(174, 25);
+            this.labelNumFields.TabIndex = 1;
+            this.labelNumFields.Text = "Number of fields:";
+            this.labelNumFields.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelIndexName
+            // 
+            this.labelIndexName.AutoSize = true;
+            this.labelIndexName.Location = new System.Drawing.Point(120, 15);
+            this.labelIndexName.Name = "labelIndexName";
+            this.labelIndexName.Size = new System.Drawing.Size(129, 25);
+            this.labelIndexName.TabIndex = 0;
+            this.labelIndexName.Text = "Index name:";
+            this.labelIndexName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // tabDocuments
             // 
             this.tabDocuments.Controls.Add(this.btnTermVector);
@@ -571,7 +903,7 @@ namespace Lucene.Net.LukeNet
             this.tabDocuments.ImageIndex = 1;
             this.tabDocuments.Location = new System.Drawing.Point(8, 39);
             this.tabDocuments.Name = "tabDocuments";
-            this.tabDocuments.Size = new System.Drawing.Size(1788, 1068);
+            this.tabDocuments.Size = new System.Drawing.Size(1494, 1050);
             this.tabDocuments.TabIndex = 1;
             this.tabDocuments.Text = "Documents";
             this.tabDocuments.Resize += new System.EventHandler(this.tabDocuments_Resize);
@@ -579,7 +911,7 @@ namespace Lucene.Net.LukeNet
             // btnTermVector
             // 
             this.btnTermVector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnTermVector.Location = new System.Drawing.Point(16, 844);
+            this.btnTermVector.Location = new System.Drawing.Point(16, 826);
             this.btnTermVector.Name = "btnTermVector";
             this.btnTermVector.Size = new System.Drawing.Size(256, 42);
             this.btnTermVector.TabIndex = 3;
@@ -607,7 +939,7 @@ namespace Lucene.Net.LukeNet
             // 
             this.labelCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCopy.AutoSize = true;
-            this.labelCopy.Location = new System.Drawing.Point(742, 853);
+            this.labelCopy.Location = new System.Drawing.Point(448, 835);
             this.labelCopy.Name = "labelCopy";
             this.labelCopy.Size = new System.Drawing.Size(231, 25);
             this.labelCopy.TabIndex = 6;
@@ -616,7 +948,7 @@ namespace Lucene.Net.LukeNet
             // buttonCopyAll
             // 
             this.buttonCopyAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCopyAll.Location = new System.Drawing.Point(1230, 844);
+            this.buttonCopyAll.Location = new System.Drawing.Point(936, 826);
             this.buttonCopyAll.Name = "buttonCopyAll";
             this.buttonCopyAll.Size = new System.Drawing.Size(240, 42);
             this.buttonCopyAll.TabIndex = 5;
@@ -627,7 +959,7 @@ namespace Lucene.Net.LukeNet
             // buttonCopySelected
             // 
             this.buttonCopySelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCopySelected.Location = new System.Drawing.Point(982, 844);
+            this.buttonCopySelected.Location = new System.Drawing.Point(688, 826);
             this.buttonCopySelected.Name = "buttonCopySelected";
             this.buttonCopySelected.Size = new System.Drawing.Size(240, 42);
             this.buttonCopySelected.TabIndex = 4;
@@ -639,7 +971,7 @@ namespace Lucene.Net.LukeNet
             // 
             this.labelLegend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelLegend.AutoSize = true;
-            this.labelLegend.Location = new System.Drawing.Point(832, 281);
+            this.labelLegend.Location = new System.Drawing.Point(538, 281);
             this.labelLegend.Name = "labelLegend";
             this.labelLegend.Size = new System.Drawing.Size(610, 25);
             this.labelLegend.TabIndex = 3;
@@ -664,7 +996,7 @@ namespace Lucene.Net.LukeNet
             this.listDocFields.Location = new System.Drawing.Point(16, 310);
             this.listDocFields.MultiSelect = false;
             this.listDocFields.Name = "listDocFields";
-            this.listDocFields.Size = new System.Drawing.Size(1456, 519);
+            this.listDocFields.Size = new System.Drawing.Size(1162, 501);
             this.listDocFields.TabIndex = 2;
             this.listDocFields.UseCompatibleStateImageBehavior = false;
             this.listDocFields.View = System.Windows.Forms.View.Details;
@@ -729,7 +1061,7 @@ namespace Lucene.Net.LukeNet
             this.groupTerm.Controls.Add(this.labelBrowseHint);
             this.groupTerm.Location = new System.Drawing.Point(448, 15);
             this.groupTerm.Name = "groupTerm";
-            this.groupTerm.Size = new System.Drawing.Size(1024, 251);
+            this.groupTerm.Size = new System.Drawing.Size(730, 251);
             this.groupTerm.TabIndex = 1;
             this.groupTerm.TabStop = false;
             this.groupTerm.Text = "Browse by term";
@@ -1021,7 +1353,7 @@ namespace Lucene.Net.LukeNet
             this.tabSearch.ImageIndex = 2;
             this.tabSearch.Location = new System.Drawing.Point(8, 39);
             this.tabSearch.Name = "tabSearch";
-            this.tabSearch.Size = new System.Drawing.Size(1788, 1068);
+            this.tabSearch.Size = new System.Drawing.Size(1494, 1050);
             this.tabSearch.TabIndex = 2;
             this.tabSearch.Text = "Search";
             // 
@@ -1040,7 +1372,7 @@ namespace Lucene.Net.LukeNet
             this.groupSearchOptions.Controls.Add(this.labelSearchExpr);
             this.groupSearchOptions.Location = new System.Drawing.Point(16, 15);
             this.groupSearchOptions.Name = "groupSearchOptions";
-            this.groupSearchOptions.Size = new System.Drawing.Size(1232, 369);
+            this.groupSearchOptions.Size = new System.Drawing.Size(938, 369);
             this.groupSearchOptions.TabIndex = 0;
             this.groupSearchOptions.TabStop = false;
             this.groupSearchOptions.Text = "Search expression";
@@ -1048,7 +1380,7 @@ namespace Lucene.Net.LukeNet
             // btnUpdateParsedQuery
             // 
             this.btnUpdateParsedQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateParsedQuery.Location = new System.Drawing.Point(1050, 312);
+            this.btnUpdateParsedQuery.Location = new System.Drawing.Point(756, 312);
             this.btnUpdateParsedQuery.Name = "btnUpdateParsedQuery";
             this.btnUpdateParsedQuery.Size = new System.Drawing.Size(150, 42);
             this.btnUpdateParsedQuery.TabIndex = 8;
@@ -1062,7 +1394,7 @@ namespace Lucene.Net.LukeNet
             this.textParsed.Location = new System.Drawing.Point(640, 179);
             this.textParsed.Multiline = true;
             this.textParsed.Name = "textParsed";
-            this.textParsed.Size = new System.Drawing.Size(560, 118);
+            this.textParsed.Size = new System.Drawing.Size(266, 118);
             this.textParsed.TabIndex = 7;
             this.textParsed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textParsed_KeyPress);
             // 
@@ -1132,7 +1464,7 @@ namespace Lucene.Net.LukeNet
             this.btnExplain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExplain.ImageIndex = 0;
             this.btnExplain.ImageList = this.imageList;
-            this.btnExplain.Location = new System.Drawing.Point(1168, 844);
+            this.btnExplain.Location = new System.Drawing.Point(874, 826);
             this.btnExplain.Name = "btnExplain";
             this.btnExplain.Size = new System.Drawing.Size(150, 42);
             this.btnExplain.TabIndex = 3;
@@ -1144,7 +1476,7 @@ namespace Lucene.Net.LukeNet
             // 
             this.labelSearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSearchResult.AutoSize = true;
-            this.labelSearchResult.Location = new System.Drawing.Point(16, 853);
+            this.labelSearchResult.Location = new System.Drawing.Point(16, 835);
             this.labelSearchResult.Name = "labelSearchResult";
             this.labelSearchResult.Size = new System.Drawing.Size(153, 25);
             this.labelSearchResult.TabIndex = 8;
@@ -1154,7 +1486,7 @@ namespace Lucene.Net.LukeNet
             // 
             this.labelSearchDocs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSearchDocs.AutoSize = true;
-            this.labelSearchDocs.Location = new System.Drawing.Point(256, 853);
+            this.labelSearchDocs.Location = new System.Drawing.Point(256, 835);
             this.labelSearchDocs.Name = "labelSearchDocs";
             this.labelSearchDocs.Size = new System.Drawing.Size(75, 25);
             this.labelSearchDocs.TabIndex = 10;
@@ -1164,7 +1496,7 @@ namespace Lucene.Net.LukeNet
             // 
             this.labelSearchRes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSearchRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSearchRes.Location = new System.Drawing.Point(176, 853);
+            this.labelSearchRes.Location = new System.Drawing.Point(176, 835);
             this.labelSearchRes.Name = "labelSearchRes";
             this.labelSearchRes.Size = new System.Drawing.Size(64, 24);
             this.labelSearchRes.TabIndex = 9;
@@ -1184,7 +1516,7 @@ namespace Lucene.Net.LukeNet
             this.listSearch.Location = new System.Drawing.Point(16, 399);
             this.listSearch.MultiSelect = false;
             this.listSearch.Name = "listSearch";
-            this.listSearch.Size = new System.Drawing.Size(1456, 430);
+            this.listSearch.Size = new System.Drawing.Size(1162, 412);
             this.listSearch.TabIndex = 2;
             this.toolTip.SetToolTip(this.listSearch, "Double-click on results to display all document fields");
             this.listSearch.UseCompatibleStateImageBehavior = false;
@@ -1207,7 +1539,7 @@ namespace Lucene.Net.LukeNet
             this.buttonSearchDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSearchDelete.ImageIndex = 3;
             this.buttonSearchDelete.ImageList = this.imageList;
-            this.buttonSearchDelete.Location = new System.Drawing.Point(1328, 844);
+            this.buttonSearchDelete.Location = new System.Drawing.Point(1034, 826);
             this.buttonSearchDelete.Name = "buttonSearchDelete";
             this.buttonSearchDelete.Size = new System.Drawing.Size(144, 42);
             this.buttonSearchDelete.TabIndex = 4;
@@ -1219,7 +1551,7 @@ namespace Lucene.Net.LukeNet
             // buttonSearch
             // 
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearch.Location = new System.Drawing.Point(1264, 30);
+            this.buttonSearch.Location = new System.Drawing.Point(970, 30);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(208, 42);
             this.buttonSearch.TabIndex = 1;
@@ -1234,7 +1566,7 @@ namespace Lucene.Net.LukeNet
             this.tabFiles.ImageIndex = 4;
             this.tabFiles.Location = new System.Drawing.Point(8, 39);
             this.tabFiles.Name = "tabFiles";
-            this.tabFiles.Size = new System.Drawing.Size(1788, 1068);
+            this.tabFiles.Size = new System.Drawing.Size(1494, 1050);
             this.tabFiles.TabIndex = 3;
             this.tabFiles.Text = "Files";
             // 
@@ -1252,7 +1584,7 @@ namespace Lucene.Net.LukeNet
             this.listIndexFiles.Location = new System.Drawing.Point(16, 59);
             this.listIndexFiles.MultiSelect = false;
             this.listIndexFiles.Name = "listIndexFiles";
-            this.listIndexFiles.Size = new System.Drawing.Size(1456, 829);
+            this.listIndexFiles.Size = new System.Drawing.Size(1162, 811);
             this.listIndexFiles.TabIndex = 2;
             this.listIndexFiles.UseCompatibleStateImageBehavior = false;
             this.listIndexFiles.View = System.Windows.Forms.View.Details;
@@ -1296,7 +1628,7 @@ namespace Lucene.Net.LukeNet
             this.tabPlugins.ImageIndex = 5;
             this.tabPlugins.Location = new System.Drawing.Point(8, 39);
             this.tabPlugins.Name = "tabPlugins";
-            this.tabPlugins.Size = new System.Drawing.Size(1788, 1068);
+            this.tabPlugins.Size = new System.Drawing.Size(1494, 1050);
             this.tabPlugins.TabIndex = 4;
             this.tabPlugins.Text = "Plugins";
             // 
@@ -1309,7 +1641,7 @@ namespace Lucene.Net.LukeNet
             this.groupPlugin.Controls.Add(this.groupPluginInfo);
             this.groupPlugin.Location = new System.Drawing.Point(256, 30);
             this.groupPlugin.Name = "groupPlugin";
-            this.groupPlugin.Size = new System.Drawing.Size(1216, 858);
+            this.groupPlugin.Size = new System.Drawing.Size(922, 840);
             this.groupPlugin.TabIndex = 2;
             this.groupPlugin.TabStop = false;
             // 
@@ -1320,7 +1652,7 @@ namespace Lucene.Net.LukeNet
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPlugin.Location = new System.Drawing.Point(16, 118);
             this.panelPlugin.Name = "panelPlugin";
-            this.panelPlugin.Size = new System.Drawing.Size(1184, 726);
+            this.panelPlugin.Size = new System.Drawing.Size(890, 708);
             this.panelPlugin.TabIndex = 1;
             // 
             // groupPluginInfo
@@ -1332,14 +1664,14 @@ namespace Lucene.Net.LukeNet
             this.groupPluginInfo.Controls.Add(this.lblPluginInfo);
             this.groupPluginInfo.Location = new System.Drawing.Point(16, 15);
             this.groupPluginInfo.Name = "groupPluginInfo";
-            this.groupPluginInfo.Size = new System.Drawing.Size(1184, 88);
+            this.groupPluginInfo.Size = new System.Drawing.Size(890, 88);
             this.groupPluginInfo.TabIndex = 0;
             this.groupPluginInfo.TabStop = false;
             // 
             // linkPluginURL
             // 
             this.linkPluginURL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkPluginURL.Location = new System.Drawing.Point(832, 30);
+            this.linkPluginURL.Location = new System.Drawing.Point(538, 30);
             this.linkPluginURL.Name = "linkPluginURL";
             this.linkPluginURL.Size = new System.Drawing.Size(320, 42);
             this.linkPluginURL.TabIndex = 1;
@@ -1352,7 +1684,7 @@ namespace Lucene.Net.LukeNet
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPluginInfo.Location = new System.Drawing.Point(16, 30);
             this.lblPluginInfo.Name = "lblPluginInfo";
-            this.lblPluginInfo.Size = new System.Drawing.Size(800, 44);
+            this.lblPluginInfo.Size = new System.Drawing.Size(506, 44);
             this.lblPluginInfo.TabIndex = 0;
             this.lblPluginInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1363,340 +1695,9 @@ namespace Lucene.Net.LukeNet
             this.lstPlugins.ItemHeight = 25;
             this.lstPlugins.Location = new System.Drawing.Point(16, 30);
             this.lstPlugins.Name = "lstPlugins";
-            this.lstPlugins.Size = new System.Drawing.Size(224, 829);
+            this.lstPlugins.Size = new System.Drawing.Size(224, 804);
             this.lstPlugins.TabIndex = 1;
             this.lstPlugins.SelectedIndexChanged += new System.EventHandler(this.lstPlugins_SelectedIndexChanged);
-            // 
-            // labelIndexName
-            // 
-            this.labelIndexName.AutoSize = true;
-            this.labelIndexName.Location = new System.Drawing.Point(120, 15);
-            this.labelIndexName.Name = "labelIndexName";
-            this.labelIndexName.Size = new System.Drawing.Size(129, 25);
-            this.labelIndexName.TabIndex = 0;
-            this.labelIndexName.Text = "Index name:";
-            this.labelIndexName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelNumFields
-            // 
-            this.labelNumFields.AutoSize = true;
-            this.labelNumFields.Location = new System.Drawing.Point(72, 44);
-            this.labelNumFields.Name = "labelNumFields";
-            this.labelNumFields.Size = new System.Drawing.Size(174, 25);
-            this.labelNumFields.TabIndex = 1;
-            this.labelNumFields.Text = "Number of fields:";
-            this.labelNumFields.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelNumDocs
-            // 
-            this.labelNumDocs.AutoSize = true;
-            this.labelNumDocs.Location = new System.Drawing.Point(16, 74);
-            this.labelNumDocs.Name = "labelNumDocs";
-            this.labelNumDocs.Size = new System.Drawing.Size(228, 25);
-            this.labelNumDocs.TabIndex = 2;
-            this.labelNumDocs.Text = "Number of documents:";
-            this.labelNumDocs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelNumTerms
-            // 
-            this.labelNumTerms.AutoSize = true;
-            this.labelNumTerms.Location = new System.Drawing.Point(70, 103);
-            this.labelNumTerms.Name = "labelNumTerms";
-            this.labelNumTerms.Size = new System.Drawing.Size(176, 25);
-            this.labelNumTerms.TabIndex = 3;
-            this.labelNumTerms.Text = "Number of terms:";
-            this.labelNumTerms.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelLastMod
-            // 
-            this.labelLastMod.AutoSize = true;
-            this.labelLastMod.Location = new System.Drawing.Point(102, 192);
-            this.labelLastMod.Name = "labelLastMod";
-            this.labelLastMod.Size = new System.Drawing.Size(146, 25);
-            this.labelLastMod.TabIndex = 4;
-            this.labelLastMod.Text = "Last modified:";
-            this.labelLastMod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelName
-            // 
-            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelName.Location = new System.Drawing.Point(256, 15);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(992, 29);
-            this.labelName.TabIndex = 5;
-            this.labelName.Text = "?";
-            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelMod
-            // 
-            this.labelMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelMod.Location = new System.Drawing.Point(256, 192);
-            this.labelMod.Name = "labelMod";
-            this.labelMod.Size = new System.Drawing.Size(992, 30);
-            this.labelMod.TabIndex = 6;
-            this.labelMod.Text = "?";
-            this.labelMod.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelTerms
-            // 
-            this.labelTerms.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTerms.Location = new System.Drawing.Point(256, 103);
-            this.labelTerms.Name = "labelTerms";
-            this.labelTerms.Size = new System.Drawing.Size(992, 30);
-            this.labelTerms.TabIndex = 7;
-            this.labelTerms.Text = "?";
-            this.labelTerms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelDocs
-            // 
-            this.labelDocs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDocs.Location = new System.Drawing.Point(256, 74);
-            this.labelDocs.Name = "labelDocs";
-            this.labelDocs.Size = new System.Drawing.Size(992, 29);
-            this.labelDocs.TabIndex = 8;
-            this.labelDocs.Text = "?";
-            this.labelDocs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelFields
-            // 
-            this.labelFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFields.Location = new System.Drawing.Point(256, 44);
-            this.labelFields.Name = "labelFields";
-            this.labelFields.Size = new System.Drawing.Size(992, 30);
-            this.labelFields.TabIndex = 9;
-            this.labelFields.Text = "?";
-            this.labelFields.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // separatorOverview
-            // 
-            this.separatorOverview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separatorOverview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.separatorOverview.Location = new System.Drawing.Point(16, 236);
-            this.separatorOverview.Name = "separatorOverview";
-            this.separatorOverview.Size = new System.Drawing.Size(1446, 6);
-            this.separatorOverview.TabIndex = 10;
-            // 
-            // labelSelectHelp
-            // 
-            this.labelSelectHelp.AutoSize = true;
-            this.labelSelectHelp.Location = new System.Drawing.Point(16, 251);
-            this.labelSelectHelp.Name = "labelSelectHelp";
-            this.labelSelectHelp.Size = new System.Drawing.Size(1080, 25);
-            this.labelSelectHelp.TabIndex = 11;
-            this.labelSelectHelp.Text = "Select fields from the list below, and press button to view top terms in these fi" +
-    "elds. No selection means all fields.";
-            // 
-            // labelSelectHint
-            // 
-            this.labelSelectHint.AutoSize = true;
-            this.labelSelectHint.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSelectHint.Location = new System.Drawing.Point(16, 281);
-            this.labelSelectHint.Name = "labelSelectHint";
-            this.labelSelectHint.Size = new System.Drawing.Size(721, 22);
-            this.labelSelectHint.TabIndex = 12;
-            this.labelSelectHint.Text = "Hint: use Shift-Click to select ranges, or Ctrl-Click to select multiple fields (" +
-    "or unselect all).";
-            // 
-            // labelListFields
-            // 
-            this.labelListFields.AutoSize = true;
-            this.labelListFields.Location = new System.Drawing.Point(16, 310);
-            this.labelListFields.Name = "labelListFields";
-            this.labelListFields.Size = new System.Drawing.Size(170, 25);
-            this.labelListFields.TabIndex = 13;
-            this.labelListFields.Text = "&Available Fields:";
-            // 
-            // labelTopTerms
-            // 
-            this.labelTopTerms.AutoSize = true;
-            this.labelTopTerms.Location = new System.Drawing.Point(448, 310);
-            this.labelTopTerms.Name = "labelTopTerms";
-            this.labelTopTerms.Size = new System.Drawing.Size(472, 25);
-            this.labelTopTerms.TabIndex = 18;
-            this.labelTopTerms.Text = "&Top ranking terms. (Right-click for more options)";
-            // 
-            // labelDeletionsTitle
-            // 
-            this.labelDeletionsTitle.AutoSize = true;
-            this.labelDeletionsTitle.Location = new System.Drawing.Point(100, 133);
-            this.labelDeletionsTitle.Name = "labelDeletionsTitle";
-            this.labelDeletionsTitle.Size = new System.Drawing.Size(149, 25);
-            this.labelDeletionsTitle.TabIndex = 20;
-            this.labelDeletionsTitle.Text = "Has deletions:";
-            this.labelDeletionsTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelDeletions
-            // 
-            this.labelDeletions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDeletions.Location = new System.Drawing.Point(256, 133);
-            this.labelDeletions.Name = "labelDeletions";
-            this.labelDeletions.Size = new System.Drawing.Size(992, 29);
-            this.labelDeletions.TabIndex = 21;
-            this.labelDeletions.Text = "?";
-            this.labelDeletions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelVersionTitle
-            // 
-            this.labelVersionTitle.AutoSize = true;
-            this.labelVersionTitle.Location = new System.Drawing.Point(102, 162);
-            this.labelVersionTitle.Name = "labelVersionTitle";
-            this.labelVersionTitle.Size = new System.Drawing.Size(146, 25);
-            this.labelVersionTitle.TabIndex = 22;
-            this.labelVersionTitle.Text = "Index version:";
-            this.labelVersionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelVersion
-            // 
-            this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelVersion.Location = new System.Drawing.Point(256, 162);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(992, 30);
-            this.labelVersion.TabIndex = 23;
-            this.labelVersion.Text = "?";
-            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(21, 347);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.listFields);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.listTerms);
-            this.splitContainer1.Panel2.Controls.Add(this.domainTerms);
-            this.splitContainer1.Panel2.Controls.Add(this.labelNumOfTerms);
-            this.splitContainer1.Panel2.Controls.Add(this.buttonTopTerms);
-            this.splitContainer1.Size = new System.Drawing.Size(1469, 696);
-            this.splitContainer1.SplitterDistance = 489;
-            this.splitContainer1.TabIndex = 24;
-            // 
-            // listFields
-            // 
-            this.listFields.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listFields.CheckBoxes = true;
-            this.listFields.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderFieldName});
-            this.listFields.FullRowSelect = true;
-            this.listFields.GridLines = true;
-            this.listFields.HideSelection = false;
-            this.listFields.Location = new System.Drawing.Point(17, 7);
-            this.listFields.MultiSelect = false;
-            this.listFields.Name = "listFields";
-            this.listFields.Size = new System.Drawing.Size(460, 682);
-            this.listFields.TabIndex = 15;
-            this.listFields.UseCompatibleStateImageBehavior = false;
-            this.listFields.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderFieldName
-            // 
-            this.columnHeaderFieldName.Text = "Name";
-            this.columnHeaderFieldName.Width = 200;
-            // 
-            // tabOverview
-            // 
-            this.tabOverview.Controls.Add(this.splitContainer1);
-            this.tabOverview.Controls.Add(this.labelVersion);
-            this.tabOverview.Controls.Add(this.labelVersionTitle);
-            this.tabOverview.Controls.Add(this.labelDeletions);
-            this.tabOverview.Controls.Add(this.labelDeletionsTitle);
-            this.tabOverview.Controls.Add(this.labelTopTerms);
-            this.tabOverview.Controls.Add(this.labelListFields);
-            this.tabOverview.Controls.Add(this.labelSelectHint);
-            this.tabOverview.Controls.Add(this.labelSelectHelp);
-            this.tabOverview.Controls.Add(this.separatorOverview);
-            this.tabOverview.Controls.Add(this.labelFields);
-            this.tabOverview.Controls.Add(this.labelDocs);
-            this.tabOverview.Controls.Add(this.labelTerms);
-            this.tabOverview.Controls.Add(this.labelMod);
-            this.tabOverview.Controls.Add(this.labelName);
-            this.tabOverview.Controls.Add(this.labelLastMod);
-            this.tabOverview.Controls.Add(this.labelNumTerms);
-            this.tabOverview.Controls.Add(this.labelNumDocs);
-            this.tabOverview.Controls.Add(this.labelNumFields);
-            this.tabOverview.Controls.Add(this.labelIndexName);
-            this.tabOverview.ImageIndex = 0;
-            this.tabOverview.Location = new System.Drawing.Point(8, 39);
-            this.tabOverview.Name = "tabOverview";
-            this.tabOverview.Size = new System.Drawing.Size(1494, 1050);
-            this.tabOverview.TabIndex = 0;
-            this.tabOverview.Text = "Overview";
-            this.tabOverview.Resize += new System.EventHandler(this.tabOverview_Resize);
-            // 
-            // listTerms
-            // 
-            this.listTerms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listTerms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderNo,
-            this.columnHeaderTopTermRank,
-            this.columnHeaderTopTermField,
-            this.columnHeaderTopTermText});
-            this.listTerms.ContextMenu = this.contextMenu;
-            this.listTerms.FullRowSelect = true;
-            this.listTerms.GridLines = true;
-            this.listTerms.Location = new System.Drawing.Point(264, 22);
-            this.listTerms.MultiSelect = false;
-            this.listTerms.Name = "listTerms";
-            this.listTerms.Size = new System.Drawing.Size(700, 667);
-            this.listTerms.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listTerms.TabIndex = 23;
-            this.listTerms.UseCompatibleStateImageBehavior = false;
-            this.listTerms.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderNo
-            // 
-            this.columnHeaderNo.Text = "?";
-            this.columnHeaderNo.Width = 40;
-            // 
-            // columnHeaderTopTermRank
-            // 
-            this.columnHeaderTopTermRank.Text = "Rank";
-            this.columnHeaderTopTermRank.Width = 50;
-            // 
-            // columnHeaderTopTermField
-            // 
-            this.columnHeaderTopTermField.Text = "Field";
-            this.columnHeaderTopTermField.Width = 120;
-            // 
-            // columnHeaderTopTermText
-            // 
-            this.columnHeaderTopTermText.Text = "Text";
-            this.columnHeaderTopTermText.Width = 306;
-            // 
-            // domainTerms
-            // 
-            this.domainTerms.Location = new System.Drawing.Point(72, 184);
-            this.domainTerms.Name = "domainTerms";
-            this.domainTerms.Size = new System.Drawing.Size(112, 31);
-            this.domainTerms.TabIndex = 22;
-            // 
-            // labelNumOfTerms
-            // 
-            this.labelNumOfTerms.AutoSize = true;
-            this.labelNumOfTerms.Location = new System.Drawing.Point(24, 155);
-            this.labelNumOfTerms.Name = "labelNumOfTerms";
-            this.labelNumOfTerms.Size = new System.Drawing.Size(212, 25);
-            this.labelNumOfTerms.TabIndex = 21;
-            this.labelNumOfTerms.Text = "&Number of top terms:";
-            // 
-            // buttonTopTerms
-            // 
-            this.buttonTopTerms.Location = new System.Drawing.Point(24, 96);
-            this.buttonTopTerms.Name = "buttonTopTerms";
-            this.buttonTopTerms.Size = new System.Drawing.Size(224, 42);
-            this.buttonTopTerms.TabIndex = 20;
-            this.buttonTopTerms.Text = "&Show top terms ->";
             // 
             // Luke
             // 
@@ -1714,6 +1715,13 @@ namespace Lucene.Net.LukeNet
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanelMessage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanelLogo)).EndInit();
             this.tabControl.ResumeLayout(false);
+            this.tabOverview.ResumeLayout(false);
+            this.tabOverview.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.tabDocuments.ResumeLayout(false);
             this.tabDocuments.PerformLayout();
             this.groupTerm.ResumeLayout(false);
@@ -1729,13 +1737,6 @@ namespace Lucene.Net.LukeNet
             this.tabPlugins.ResumeLayout(false);
             this.groupPlugin.ResumeLayout(false);
             this.groupPluginInfo.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.tabOverview.ResumeLayout(false);
-            this.tabOverview.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -3587,11 +3588,15 @@ namespace Lucene.Net.LukeNet
 
             Cursor.Current = Cursors.Default;
         }
-		
-	}
 
-	#region class GrowableStringArray
-	class GrowableStringArray 
+        private void labelFields_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    #region class GrowableStringArray
+    class GrowableStringArray 
 	{
 		public int INITIAL_SIZE = 20;
 		private int size = 0;

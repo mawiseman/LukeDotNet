@@ -16,7 +16,7 @@ namespace LukeDotNet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Luke());
+            Application.Run(new LukeDotNet());
         }
     }
 }
