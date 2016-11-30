@@ -24,6 +24,8 @@ namespace LukeDotNetWPF
         public LukeDotNetWindow()
         {
             InitializeComponent();
+
+            this.DataContext = new LukeDotNetWPF.ViewModels.LukeDotNetVM();
         }
 
         #region Events

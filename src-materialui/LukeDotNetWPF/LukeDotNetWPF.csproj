@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,6 +73,7 @@
     <Compile Include="Helper\DelegateCommand.cs" />
     <Compile Include="Models\LukeIndex.cs" />
     <Compile Include="Helper\ObservableObject.cs" />
+    <Compile Include="Models\SimpleCommand.cs" />
     <Compile Include="ViewModels\LukeDotNetVM.cs" />
     <Compile Include="Views\IndexControl.xaml.cs">
       <DependentUpon>IndexControl.xaml</DependentUpon>

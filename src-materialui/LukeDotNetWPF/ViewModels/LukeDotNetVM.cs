@@ -4,26 +4,23 @@ using LukeDotNetWPF.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LukeDotNetWPF.ViewModels
 {
     public class LukeDotNetVM
     {
-        public ICommand OpenIndexCommand { get; set; }
-        public ICommand OpenNewIndexCommand { get; set; }
-
         public LukeDotNetVM()
         {
             LoadRecentIndexes();
-            OpenNewIndexCommand = new DelegateCommand(OpenNewIndex);
-            OpenIndexCommand = new DelegateCommand(OpenIndex);
         }
 
-        public ObservableCollection<LukeIndex> RecentIndexes { get; set; }
+        public List<LukeIndex> RecentIndexes { get; set; }
 
         private void LoadRecentIndexes()
         {
@@ -34,30 +31,86 @@ namespace LukeDotNetWPF.ViewModels
             recentIndexes.Add(@"C:\Data\Development\sitecore_master_index");
             recentIndexes.Add(@"C:\Data\Development\sitecore_web_index");
 
-            RecentIndexes = new ObservableCollection<LukeIndex>();
+            RecentIndexes = new List<LukeIndex>();
             foreach (string recentIndex in recentIndexes)
             {
                 RecentIndexes.Add(new LukeIndex(recentIndex));
             }
         }
-
-        private void OpenIndex()
+        
+        
+        private ICommand _openNewIndex;
+        public ICommand OpenNewIndex
         {
-            
+            get
+            {
+                return this._openNewIndex ?? (this._openNewIndex = new SimpleCommand
+                {
+                    CanExecuteDelegate = x => true,
+                    ExecuteDelegate = x => { this.DoOpenNewIndex(x); }
+                });
+            }
         }
-
-        private void OpenNewIndex()
+        protected virtual void DoOpenNewIndex(object sender)
         {
             var fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
-
             var result = fbd.ShowDialog();
+        }
 
-            if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
+
+        private ICommand _openIndex;
+        public ICommand OpenIndex
+        {
+            get
             {
-                //string[] files = System.IO.Directory.GetFiles(fbd.SelectedPath);
-
-                //System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+                return this._openIndex ?? (this._openIndex = new SimpleCommand
+                {
+                    CanExecuteDelegate = x => true,
+                    ExecuteDelegate = x => { this.DoOpenIndex(x); }
+                });
             }
+        }
+        protected virtual void DoOpenIndex(object sender)
+        {
+            //open the index
+            string s = "";
+        }
+        
+
+        private ICommand _showStartPage;
+        public ICommand ShowStartPage
+        {
+            get
+            {
+                return this._showStartPage ?? (this._showStartPage = new SimpleCommand
+                {
+                    CanExecuteDelegate = x => true,
+                    ExecuteDelegate = x => { this.DoShowStartPage(x); }
+                });
+            }
+        }
+        protected virtual void DoShowStartPage(object sender)
+        {
+            //open the index
+            string s = "";
+        }
+
+
+        private ICommand _exitApp;
+        public ICommand ExitApp
+        {
+            get
+            {
+                return this._exitApp ?? (this._exitApp = new SimpleCommand
+                {
+                    CanExecuteDelegate = x => true,
+                    ExecuteDelegate = x => { this.DoExitApp(x); }
+                });
+            }
+        }
+        protected virtual void DoExitApp(object sender)
+        {
+            Application.Current.MainWindow.Close();
         }
     }
 }
