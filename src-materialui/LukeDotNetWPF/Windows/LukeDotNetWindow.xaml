@@ -1,0 +1,67 @@
+﻿<Controls:MetroWindow x:Class="LukeDotNetWPF.LukeDotNetWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:System="clr-namespace:System;assembly=mscorlib"
+                      Title="LukeDotNet"
+                      Width="800"
+                      Height="500"
+                      WindowStartupLocation="CenterScreen"
+                      Style="{DynamicResource VSWindowStyleKey}"
+                      xmlns:Views="clr-namespace:LukeDotNetWPF.Views"
+                      xmlns:ViewModels="clr-namespace:LukeDotNetWPF.ViewModels"
+                      mc:Ignorable="d"
+                      d:DataContext="{d:DesignInstance ViewModels:LukeDotNetVM}" >
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel>
+        <Menu Margin="2,0,0,0"
+              DockPanel.Dock="Top"
+              SnapsToDevicePixels="True">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Command="{Binding OpenNewIndexCommand}" />
+                <MenuItem Header="Recent indexes">
+                    <MenuItem Header="1. C:\...\avjennings\data\sitecore_web_index" />
+                    <MenuItem Header="2. C:\...\avjennings\data\sitecore_master_index" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Show start page"  />
+                <Separator />
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About..." />
+            </MenuItem>
+        </Menu>
+        <TextBlock 
+                   VerticalAlignment="Center"
+                   DockPanel.Dock="Left"
+                   Foreground="{StaticResource Foreground}" Height="7" Margin="0,152,0,143.5" Width="21">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <Grid>
+            <TabControl Margin="0,10,0,0">
+                <TabItem Header="Start Page" Name="StartPage">
+                    <Views:StartPageControl></Views:StartPageControl>
+                </TabItem>
+                <TabItem Header="sitecore_master_index" Name="Index1">
+                    <Views:IndexControl></Views:IndexControl>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
+    </DockPanel>
+
+</Controls:MetroWindow>

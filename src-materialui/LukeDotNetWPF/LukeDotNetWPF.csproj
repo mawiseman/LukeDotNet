@@ -68,15 +68,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\DelegateCommand.cs" />
-    <Compile Include="ViewModels\IndexLinkButton.cs" />
-    <Compile Include="ViewModels\LukeDotNet.cs" />
-    <Compile Include="ViewModels\ObservableObject.cs" />
-    <Compile Include="ViewModels\StartPage.cs" />
+    <Compile Include="Models\IndexOverview.cs" />
+    <Compile Include="Helper\DelegateCommand.cs" />
+    <Compile Include="Models\LukeIndex.cs" />
+    <Compile Include="Helper\ObservableObject.cs" />
+    <Compile Include="ViewModels\LukeDotNetVM.cs" />
+    <Compile Include="Views\IndexControl.xaml.cs">
+      <DependentUpon>IndexControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OverviewControl.xaml.cs">
+      <DependentUpon>OverviewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartPageControl.xaml.cs">
       <DependentUpon>StartPageControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\LukeDotNetWindow.xaml">
+    <Page Include="Views\IndexControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LukeDotNetWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -87,10 +97,14 @@
     <Compile Include="Core\Models\Preferences.cs" />
     <Compile Include="Core\Repositories\PreferenceRepository.cs" />
     <Compile Include="Core\Service\LukeService.cs" />
-    <Compile Include="Views\LukeDotNetWindow.xaml.cs">
+    <Compile Include="Windows\LukeDotNetWindow.xaml.cs">
       <DependentUpon>LukeDotNetWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\OverviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StartPageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,10 +138,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helper\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

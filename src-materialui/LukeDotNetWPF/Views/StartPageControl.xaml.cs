@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using MahApps.Metro.Controls;
 
 namespace LukeDotNetWPF.Views
 {

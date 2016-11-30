@@ -9,11 +9,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" 
              d:DesignWidth="300"
-             d:DataContext="{d:DesignInstance ViewModels:StartPage}">
+             d:DataContext="{d:DesignInstance ViewModels:LukeDotNetVM}">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -35,14 +36,14 @@
                             Content="Open index..."
                             FontSize="14"
                             Style="{StaticResource LinkButton}"
-                            Command="{Binding OpenIndexCommand}" />
+                            Command="{Binding OpenNewIndexCommand}" />
 
             <TextBlock Margin="0,10,0,10"
                            FontSize="18"
                            Foreground="{StaticResource Foreground}"
                            Text="Recent" />
 
-            <ItemsControl ItemsSource="{Binding Recent}">
+            <ItemsControl ItemsSource="{Binding RecentIndexes}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel />
@@ -53,26 +54,13 @@
                         <Button 
                             Margin="0,10,0,3"
                             FontSize="14"
-                            Style="{StaticResource LinkButton}"
-                            Content="{Binding Content}"
-                            ToolTip="{Binding ToolTip}"/>
+                            Style="{DynamicResource LinkButton}"
+                            Content="{Binding IndexName}"
+                            ToolTip="{Binding IndexPath}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
             
-            <StackPanel Name="spRecentIndexes">
-
-                <!--<Button Margin="0,10,0,3"
-                                Content="sample_web_index"
-                                FontSize="14"
-                                Style="{StaticResource LinkButton}" />
-                <Button Margin="0,3,0,3"
-                                Content="sample_master_index"
-                                FontSize="14"
-                                Style="{StaticResource LinkButton}" />-->
-            </StackPanel>
-
-
         </StackPanel>
     </Grid>
 </UserControl>

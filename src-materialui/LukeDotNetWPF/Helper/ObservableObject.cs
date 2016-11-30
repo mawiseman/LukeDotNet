@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LukeDotNetWPF.ViewModels
+namespace LukeDotNetWPF.Helper
 {
     public class ObservableObject : INotifyPropertyChanged
     {
