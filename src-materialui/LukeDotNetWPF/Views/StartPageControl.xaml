@@ -10,8 +10,7 @@
              d:DesignHeight="300" 
              d:DesignWidth="300"
              >
-    <!--d:DataContext="{d:DesignInstance ViewModels:LukeDotNetVM}"-->
-
+    
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -57,7 +56,9 @@
                             FontSize="14"
                             Style="{DynamicResource LinkButton}"
                             Content="{Binding IndexName}"
-                            ToolTip="{Binding IndexPath}" />
+                            ToolTip="{Binding IndexPath}"
+                            Command="{Binding DataContext.OpenIndexCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}} }" 
+                            CommandParameter="{Binding .}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

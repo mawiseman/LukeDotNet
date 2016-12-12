@@ -1,5 +1,4 @@
 ﻿using LukeDotNetWPF.Core.Service;
-using LukeDotNetWPF.Helper;
 using LukeDotNetWPF.Models;
 using System;
 using System.Collections.Generic;
@@ -13,14 +12,37 @@ using System.Windows.Input;
 
 namespace LukeDotNetWPF.ViewModels
 {
-    public class LukeDotNetVM
+    public class LukeDotNetVM : INotifyPropertyChanged
     {
+        public List<LukeIndex> RecentIndexes { get; set; }
+
+        public ObservableCollection<ITabItemVM> Tabs { get; private set; }
+
+        private int _selectedTabIndex;
+        public int SelectedTabIndex
+        {
+            get { return _selectedTabIndex; }
+            set
+            {
+                _selectedTabIndex = value;
+                OnPropertyChanged("SelectedTabIndex");
+            }
+        }
+
         public LukeDotNetVM()
         {
             LoadRecentIndexes();
+            InitialiseTabs();
         }
+        
+        private void InitialiseTabs()
+        {
+            Tabs = new ObservableCollection<ITabItemVM>();
 
-        public List<LukeIndex> RecentIndexes { get; set; }
+            DoShowStartPage(this);
+
+            SelectedTabIndex = 0;
+        }
 
         private void LoadRecentIndexes()
         {
@@ -37,45 +59,96 @@ namespace LukeDotNetWPF.ViewModels
                 RecentIndexes.Add(new LukeIndex(recentIndex));
             }
         }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+
+        private ICommand CloseTabCommand(ITabItemVM tabitemVM)
+        {
+            return new SimpleCommand
+            {
+                CanExecuteDelegate = x => true,
+                ExecuteDelegate = x => { this.DoCloseTabCommand(tabitemVM); }
+            };
+        }
+        protected virtual void DoCloseTabCommand(ITabItemVM tabitemVM)
+        {
+            var tabToClose = Tabs.Where(t => t.TabName == tabitemVM.TabName).FirstOrDefault();
+
+            if (tabToClose != null)
+                Tabs.Remove(tabToClose);
+        }
         
-        
-        private ICommand _openNewIndex;
-        public ICommand OpenNewIndex
+
+        private ICommand _openNewIndexCommand;
+        public ICommand OpenNewIndexCommand
         {
             get
             {
-                return this._openNewIndex ?? (this._openNewIndex = new SimpleCommand
+                return this._openNewIndexCommand ?? (this._openNewIndexCommand = new SimpleCommand
                 {
                     CanExecuteDelegate = x => true,
-                    ExecuteDelegate = x => { this.DoOpenNewIndex(x); }
+                    ExecuteDelegate = x => { this.DoOpenNewIndexCommand(x); }
                 });
             }
         }
-        protected virtual void DoOpenNewIndex(object sender)
+        protected virtual void DoOpenNewIndexCommand(object sender)
         {
             var fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
             var result = fbd.ShowDialog();
         }
 
 
-        private ICommand _openIndex;
-        public ICommand OpenIndex
+        private ICommand _openIndexCommand;
+        public ICommand OpenIndexCommand
         {
             get
             {
-                return this._openIndex ?? (this._openIndex = new SimpleCommand
+                return this._openIndexCommand ?? (this._openIndexCommand = new SimpleCommand
                 {
                     CanExecuteDelegate = x => true,
-                    ExecuteDelegate = x => { this.DoOpenIndex(x); }
+                    ExecuteDelegate = x => { this.DoOpenIndexCommand(x); }
                 });
             }
         }
-        protected virtual void DoOpenIndex(object sender)
+        protected virtual void DoOpenIndexCommand(object sender)
         {
-            //open the index
-            string s = "";
+            LukeIndex lukeIndex = (LukeIndex)sender;
+
+            var lukeIndexTab = IsIndexOpen(lukeIndex);
+
+            if (lukeIndexTab != null)
+            {
+                SelectedTabIndex = Tabs.IndexOf(lukeIndexTab);
+            }
+            else
+            {
+                var luceneIndex = new LuceneIndexVM()
+                {
+                    TabName = lukeIndex.IndexName,
+                    LukeIndex = lukeIndex
+                };
+
+                luceneIndex.CloseCommand = this.CloseTabCommand(luceneIndex);
+
+                Tabs.Add(luceneIndex);
+
+                SelectedTabIndex = Tabs.Count - 1;
+            }
         }
-        
+        private ITabItemVM IsIndexOpen(LukeIndex lukeIndex)
+        {
+            return Tabs.Where(
+                t => typeof(LuceneIndexVM) == t.GetType()
+                && ((LuceneIndexVM)t).LukeIndex.IndexPath == lukeIndex.IndexPath)
+                .FirstOrDefault();
+        }
+
 
         private ICommand _showStartPage;
         public ICommand ShowStartPage
@@ -84,31 +157,49 @@ namespace LukeDotNetWPF.ViewModels
             {
                 return this._showStartPage ?? (this._showStartPage = new SimpleCommand
                 {
-                    CanExecuteDelegate = x => true,
+                    CanExecuteDelegate = x => !IsStartPageVisibile(),
                     ExecuteDelegate = x => { this.DoShowStartPage(x); }
                 });
             }
         }
         protected virtual void DoShowStartPage(object sender)
         {
-            //open the index
-            string s = "";
+            if(!IsStartPageVisibile())
+            {
+                var startPage = new StartPageVM()
+                {
+                    TabName = "Start Page",
+                    RecentIndexes = this.RecentIndexes,
+                    OpenNewIndexCommand = this.OpenNewIndexCommand,
+                    OpenIndexCommand = this.OpenIndexCommand
+                };
+
+                startPage.CloseCommand = this.CloseTabCommand(startPage);
+
+                Tabs.Insert(0, startPage);
+
+                SelectedTabIndex = 0;
+            }
+        }
+        private bool IsStartPageVisibile()
+        {
+            return Tabs.Where(t => typeof(StartPageVM) == t.GetType()).Any();
         }
 
 
-        private ICommand _exitApp;
-        public ICommand ExitApp
+        private ICommand _exitAppCommand;
+        public ICommand ExitAppCommand
         {
             get
             {
-                return this._exitApp ?? (this._exitApp = new SimpleCommand
+                return this._exitAppCommand ?? (this._exitAppCommand = new SimpleCommand
                 {
                     CanExecuteDelegate = x => true,
-                    ExecuteDelegate = x => { this.DoExitApp(x); }
+                    ExecuteDelegate = x => { this.DoExitAppCommand(x); }
                 });
             }
         }
-        protected virtual void DoExitApp(object sender)
+        protected virtual void DoExitAppCommand(object sender)
         {
             Application.Current.MainWindow.Close();
         }

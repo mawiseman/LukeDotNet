@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using LukeDotNetWPF.Helper;
 using System.ComponentModel;
 
 namespace LukeDotNetWPF.Models
@@ -24,7 +23,7 @@ namespace LukeDotNetWPF.Models
         {
             get
             {
-                return "get the name from the path";
+                return IndexPath.Split('\\').Last();
             }
         }
 

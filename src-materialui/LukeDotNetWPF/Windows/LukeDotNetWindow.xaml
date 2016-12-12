@@ -26,7 +26,8 @@
             <Style x:Key="RecentIndexMenuitemStyle" 
                    BasedOn="{StaticResource MetroMenuItem}"
                    TargetType="{x:Type MenuItem}">
-                <Setter Property="Command" Value="{Binding ElementName=_LukeDotNetWindow, Path=DataContext.OpenIndex}" />
+                <Setter Property="Command" Value="{Binding ElementName=_LukeDotNetWindow, Path=DataContext.OpenIndexCommand}" />
+                <Setter Property="CommandParameter" Value="{Binding .}" />
                 <Setter Property="Header" Value="{Binding IndexPath, Mode=OneWay}" />
             </Style>
         </ResourceDictionary>
@@ -38,32 +39,55 @@
               DockPanel.Dock="Top"
               SnapsToDevicePixels="True">
             <MenuItem Header="File">
-                <MenuItem Header="Open" Command="{Binding OpenNewIndex}" />
+                <MenuItem Header="Open" Command="{Binding OpenNewIndexCommand}" />
 
                 <MenuItem Header="Recent indexes"
                     ItemContainerStyle="{StaticResource RecentIndexMenuitemStyle}"
                     ItemsSource="{Binding RecentIndexes, Mode=OneWay}" />
-                
+
                 <Separator />
-                <MenuItem Header="Show start page"  />
+                <MenuItem Header="Show start page" Command="{Binding ShowStartPage}" />
                 <Separator />
-                <MenuItem Header="Exit" Command="{Binding ExitApp}"  />
+                <MenuItem Header="Exit" Command="{Binding ExitAppCommand}"  />
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About..." />
             </MenuItem>
         </Menu>
 
-        <TextBlock 
-                   VerticalAlignment="Center"
+        <TextBlock VerticalAlignment="Center"
                    DockPanel.Dock="Left"
                    Foreground="{StaticResource Foreground}" Height="7" Margin="0,152,0,143.5" Width="21">
             <TextBlock.LayoutTransform>
                 <RotateTransform Angle="90" />
             </TextBlock.LayoutTransform>
         </TextBlock>
+
         <Grid>
-            <TabControl Margin="0,10,0,0">
+
+            <TabControl Margin="0,10,0,0" ItemsSource="{Binding Tabs}" SelectedIndex="{Binding SelectedTabIndex}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding TabName}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding}">
+                            <ContentControl.Resources>
+                                <DataTemplate DataType="{x:Type ViewModels:StartPageVM}">
+                                    <Views:StartPageControl></Views:StartPageControl>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type ViewModels:LuceneIndexVM}">
+                                    <Views:IndexControl></Views:IndexControl>
+                                </DataTemplate>
+                            </ContentControl.Resources>
+                        </ContentControl>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+
+            <TabControl Margin="0,10,0,0" Visibility="Hidden">
                 <TabItem Header="Start Page" Name="StartPage">
                     <Views:StartPageControl></Views:StartPageControl>
                 </TabItem>
@@ -71,7 +95,6 @@
                     <Views:IndexControl></Views:IndexControl>
                 </TabItem>
             </TabControl>
-
         </Grid>
     </DockPanel>
 

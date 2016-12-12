@@ -25,25 +25,12 @@ namespace LukeDotNetWPF
         {
             InitializeComponent();
 
+            //this is th eonly way i could get binding to work correctly
             this.DataContext = new LukeDotNetWPF.ViewModels.LukeDotNetVM();
         }
 
         #region Events
-
-        public void OpenIndex_Click(object sender, RoutedEventArgs e)
-        {
-            var fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
-
-            var result = fbd.ShowDialog();
-
-            if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
-            {
-                //string[] files = System.IO.Directory.GetFiles(fbd.SelectedPath);
-
-                //System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
-            }
-        }
-
+        
         public void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
