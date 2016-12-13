@@ -1,4 +1,6 @@
-﻿namespace LukeDotNet
+﻿using LukeDotNet.UserControls;
+
+namespace LukeDotNet
 {
     partial class LukeDotNet
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.startPage1 = new LukeDotNet.UserControls.StartPage();
+            this.startPage1 = new StartPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -82,7 +84,7 @@
         #endregion
 
         private System.Windows.Forms.TabPage tabPage1;
-        private LukeDotNet.UserControls.StartPage startPage1;
+        private StartPage startPage1;
         private System.Windows.Forms.TabControl tabControl1;
     }
 }

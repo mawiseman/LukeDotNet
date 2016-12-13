@@ -22,14 +22,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <Style x:Key="RecentIndexMenuitemStyle" 
-                   BasedOn="{StaticResource MetroMenuItem}"
-                   TargetType="{x:Type MenuItem}">
-                <Setter Property="Command" Value="{Binding ElementName=_LukeDotNetWindow, Path=DataContext.OpenIndexCommand}" />
-                <Setter Property="CommandParameter" Value="{Binding .}" />
-                <Setter Property="Header" Value="{Binding IndexPath, Mode=OneWay}" />
-            </Style>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -42,8 +34,15 @@
                 <MenuItem Header="Open" Command="{Binding OpenNewIndexCommand}" />
 
                 <MenuItem Header="Recent indexes"
-                    ItemContainerStyle="{StaticResource RecentIndexMenuitemStyle}"
-                    ItemsSource="{Binding RecentIndexes, Mode=OneWay}" />
+                    ItemsSource="{Binding RecentIndexes, Mode=OneWay}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="MenuItem.Header" Value="{Binding IndexPath}"/>
+                            <Setter Property="MenuItem.Command" Value="{Binding ElementName=_LukeDotNetWindow, Path=DataContext.OpenIndexCommand}"/>
+                            <Setter Property="MenuItem.CommandParameter" Value="{Binding .}"/>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
 
                 <Separator />
                 <MenuItem Header="Show start page" Command="{Binding ShowStartPage}" />

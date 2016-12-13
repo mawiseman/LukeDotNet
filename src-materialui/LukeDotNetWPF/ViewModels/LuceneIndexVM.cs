@@ -16,9 +16,11 @@ namespace LukeDotNetWPF.ViewModels
 
         public LukeIndex LukeIndex { get; set; }
 
-        public LuceneIndexVM()
+        public LuceneIndexVM(string indexPath)
         {
-            //TabId = Guid.NewGuid();
+            this.LukeIndex = new LukeIndex(indexPath);
+
+            TabName = LukeIndex.IndexName;
         }
     }
 }

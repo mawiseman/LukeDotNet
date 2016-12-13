@@ -60,6 +60,33 @@ namespace LukeDotNetWPF.ViewModels
             }
         }
 
+        private void OpenLoadIndex(string indexPath)
+        {
+            // check if this index is already open
+
+            var lukeIndexTab = Tabs.Where(
+                    t => typeof(LuceneIndexVM) == t.GetType()
+                        && ((LuceneIndexVM)t).LukeIndex.IndexPath == indexPath)
+                .FirstOrDefault();
+
+            // if its open, focus the tab
+
+            if (lukeIndexTab != null)
+            {
+                SelectedTabIndex = Tabs.IndexOf(lukeIndexTab);
+            }
+            else
+            {
+                // open a new index
+
+                var luceneIndex = new LuceneIndexVM(indexPath);
+                luceneIndex.CloseCommand = this.CloseTabCommand(luceneIndex);
+
+                Tabs.Add(luceneIndex);
+                SelectedTabIndex = Tabs.Count - 1;
+            }
+        }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string property)
@@ -101,6 +128,9 @@ namespace LukeDotNetWPF.ViewModels
         {
             var fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
             var result = fbd.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+                OpenLoadIndex(fbd.SelectedPath);
         }
 
 
@@ -120,35 +150,9 @@ namespace LukeDotNetWPF.ViewModels
         {
             LukeIndex lukeIndex = (LukeIndex)sender;
 
-            var lukeIndexTab = IsIndexOpen(lukeIndex);
-
-            if (lukeIndexTab != null)
-            {
-                SelectedTabIndex = Tabs.IndexOf(lukeIndexTab);
-            }
-            else
-            {
-                var luceneIndex = new LuceneIndexVM()
-                {
-                    TabName = lukeIndex.IndexName,
-                    LukeIndex = lukeIndex
-                };
-
-                luceneIndex.CloseCommand = this.CloseTabCommand(luceneIndex);
-
-                Tabs.Add(luceneIndex);
-
-                SelectedTabIndex = Tabs.Count - 1;
-            }
+            OpenLoadIndex(lukeIndex.IndexPath);
         }
-        private ITabItemVM IsIndexOpen(LukeIndex lukeIndex)
-        {
-            return Tabs.Where(
-                t => typeof(LuceneIndexVM) == t.GetType()
-                && ((LuceneIndexVM)t).LukeIndex.IndexPath == lukeIndex.IndexPath)
-                .FirstOrDefault();
-        }
-
+        
 
         private ICommand _showStartPage;
         public ICommand ShowStartPage
@@ -164,22 +168,21 @@ namespace LukeDotNetWPF.ViewModels
         }
         protected virtual void DoShowStartPage(object sender)
         {
-            if(!IsStartPageVisibile())
+            if (IsStartPageVisibile())
+                return;
+            
+            var startPage = new StartPageVM()
             {
-                var startPage = new StartPageVM()
-                {
-                    TabName = "Start Page",
-                    RecentIndexes = this.RecentIndexes,
-                    OpenNewIndexCommand = this.OpenNewIndexCommand,
-                    OpenIndexCommand = this.OpenIndexCommand
-                };
+                TabName = "Start Page",
+                RecentIndexes = this.RecentIndexes,
+                OpenNewIndexCommand = this.OpenNewIndexCommand,
+                OpenIndexCommand = this.OpenIndexCommand
+            };
 
-                startPage.CloseCommand = this.CloseTabCommand(startPage);
+            startPage.CloseCommand = this.CloseTabCommand(startPage);
 
-                Tabs.Insert(0, startPage);
-
-                SelectedTabIndex = 0;
-            }
+            Tabs.Insert(0, startPage);
+            SelectedTabIndex = 0;
         }
         private bool IsStartPageVisibile()
         {
