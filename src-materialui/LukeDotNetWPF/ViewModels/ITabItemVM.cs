@@ -9,7 +9,7 @@ namespace LukeDotNetWPF.ViewModels
 {
     public interface ITabItemVM
     {
-        string TabName { get; set; }
+        string TabName { get; }
 
         ICommand CloseCommand { get; set; }
     }

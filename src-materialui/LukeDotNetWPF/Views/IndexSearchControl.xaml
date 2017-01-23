@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="LukeDotNetWPF.Views.IndexSearchControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LukeDotNetWPF.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="500">
+
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="5">Analyzer:</Label>
+                <ComboBox Grid.Column="1" Grid.Row="0"
+                          IsEditable="True"
+                          ItemsSource="{Binding Analyzers}"
+                          SelectedItem="{Binding SelectedAnalyzer, Mode=TwoWay}"
+                          MaxDropDownHeight="125" Margin="5"
+                          Style="{DynamicResource VirtualisedMetroComboBox}" />
+
+                <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="5">Default field:</Label>
+                <ComboBox Grid.Column="1" Grid.Row="1"
+                          IsEditable="True"
+                          ItemsSource="{Binding Fields}"
+                          SelectedItem="{Binding SelectedField, Mode=TwoWay}"
+                          MaxDropDownHeight="125" Margin="5"
+                          Style="{DynamicResource VirtualisedMetroComboBox}"
+                          Text="{Binding Path=Title}" />
+
+                <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Margin="5" >Search Expression:</Label>
+                <TextBox Grid.Column="1" Grid.Row="2" Margin="5" Name="txtSearchExpression" Text="{Binding Path=SearchExpression}"></TextBox>
+
+                <Button Grid.Column="1" Grid.Row="3" Width="100" HorizontalAlignment="Left" Margin="5" Height="30" Content="Update"></Button>
+
+                <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" Margin="5" >Parsed query view:</Label>
+                <TextBox Grid.Column="1" Grid.Row="4" Margin="5"  Text="{Binding Path=ParsedQuery}"  IsEnabled="{Binding ElementName=txtSearchExpression, Path=Text.Length, Mode=OneWay}"></TextBox>
+
+                <Button Grid.Column="1" Grid.Row="5" Width="100" HorizontalAlignment="Left" Margin="5" Height="30" Content="Search"></Button>
+
+            </Grid>
+        </StackPanel>
+
+
+    </Grid>
+
+</UserControl>

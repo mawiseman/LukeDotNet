@@ -60,7 +60,7 @@ namespace LukeDotNetWPF.ViewModels
             }
         }
 
-        private void OpenLoadIndex(string indexPath)
+        private void OpenLuceneIndex(string indexPath)
         {
             // check if this index is already open
 
@@ -130,7 +130,7 @@ namespace LukeDotNetWPF.ViewModels
             var result = fbd.ShowDialog();
 
             if (result == System.Windows.Forms.DialogResult.OK)
-                OpenLoadIndex(fbd.SelectedPath);
+                OpenLuceneIndex(fbd.SelectedPath);
         }
 
 
@@ -150,7 +150,7 @@ namespace LukeDotNetWPF.ViewModels
         {
             LukeIndex lukeIndex = (LukeIndex)sender;
 
-            OpenLoadIndex(lukeIndex.IndexPath);
+            OpenLuceneIndex(lukeIndex.IndexPath);
         }
         
 
@@ -173,7 +173,6 @@ namespace LukeDotNetWPF.ViewModels
             
             var startPage = new StartPageVM()
             {
-                TabName = "Start Page",
                 RecentIndexes = this.RecentIndexes,
                 OpenNewIndexCommand = this.OpenNewIndexCommand,
                 OpenIndexCommand = this.OpenIndexCommand

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace LukeDotNetWPF.Views
 {
     /// <summary>
-    /// Interaction logic for OverviewControl.xaml
+    /// Interaction logic for IndexSearchControl.xaml
     /// </summary>
-    public partial class OverviewControl : UserControl
+    public partial class IndexSearchControl : UserControl
     {
-        public OverviewControl()
+        public IndexSearchControl()
         {
             InitializeComponent();
         }

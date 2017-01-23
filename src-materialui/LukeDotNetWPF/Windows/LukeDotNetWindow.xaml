@@ -14,6 +14,9 @@
                       Width="800"
                       Height="500"
                       WindowStartupLocation="CenterScreen"
+                      Icon="..\Resources\LuceneDotNet.ico"
+                      ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
                       Style="{DynamicResource VSWindowStyleKey}" >
 
     <Window.Resources>
@@ -24,7 +27,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
 
     <DockPanel>
         <Menu Margin="2,0,0,0"
@@ -84,15 +86,6 @@
                         </ContentControl>
                     </DataTemplate>
                 </TabControl.ContentTemplate>
-            </TabControl>
-
-            <TabControl Margin="0,10,0,0" Visibility="Hidden">
-                <TabItem Header="Start Page" Name="StartPage">
-                    <Views:StartPageControl></Views:StartPageControl>
-                </TabItem>
-                <TabItem Header="sitecore_master_index" Name="Index1">
-                    <Views:IndexControl></Views:IndexControl>
-                </TabItem>
             </TabControl>
         </Grid>
     </DockPanel>

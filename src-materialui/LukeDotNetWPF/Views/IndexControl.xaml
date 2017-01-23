@@ -8,18 +8,28 @@
              xmlns:Views="clr-namespace:LukeDotNetWPF.Views"
                 mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.Resources>
             <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
         </Grid.Resources>
         <TabControl Controls:TabControlHelper.IsUnderlined="True">
             <TabItem Header="Overview">
-                <Views:OverviewControl></Views:OverviewControl>
-            </TabItem>
-            <TabItem Header="Documents">
-                <TextBlock FontSize="30" Text="Content" />
+                <Views:IndexOverviewControl></Views:IndexOverviewControl>
             </TabItem>
             <TabItem Header="Search">
+                <Views:IndexSearchControl></Views:IndexSearchControl>
+            </TabItem>
+            <TabItem Header="Documents">
                 <TextBlock FontSize="30" Text="Content" />
             </TabItem>
             <TabItem Header="Files">

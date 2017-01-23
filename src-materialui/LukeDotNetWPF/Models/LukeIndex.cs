@@ -5,20 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.ComponentModel;
+using System.IO;
+using Lucene.Net.Index;
+using Lucene.Net.Store;
 
 namespace LukeDotNetWPF.Models
 {
-    public class LukeIndex : INotifyPropertyChanged
+    public class LukeIndex
     {
-        private string path;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void RaisePropertyChanged(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-
+        public string IndexPath { get; private set; }
+        
         public string IndexName
         {
             get
@@ -27,23 +23,11 @@ namespace LukeDotNetWPF.Models
             }
         }
 
-        public string IndexPath
-        {
-            get { return path; }
-            set
-            {
-                if (path != value)
-                {
-                    path = value;
-                    RaisePropertyChanged("Path");
-                }
-            }
-        }
-        
-        
         public LukeIndex(string path)
         {
             IndexPath = path;
+
+            
         }
     }
 }
